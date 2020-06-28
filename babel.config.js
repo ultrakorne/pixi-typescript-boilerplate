@@ -1,7 +1,7 @@
 module.exports = function (api) {
     api.cache(false);
     const presets = [
-        ["@babel/preset-typescript"],
+        // ["@babel/preset-typescript"],
         [
             "@babel/preset-env",
             {
@@ -21,6 +21,7 @@ module.exports = function (api) {
         ["@babel/plugin-proposal-decorators", { decoratorsBeforeExport: true }],
         ["@babel/plugin-proposal-class-properties"],
         ["@babel/transform-runtime"],
+        ["@babel/plugin-transform-modules-commonjs"],
     ];
     return {
         presets,

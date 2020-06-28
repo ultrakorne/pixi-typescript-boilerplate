@@ -22,6 +22,11 @@ module.exports = (env) =>
                     ],
                     exclude: /node_modules/,
                 },
+                {
+                    test: /\.tsx?$/,
+                    use: "ts-loader",
+                    exclude: /node_modules/,
+                },
             ],
         },
         plugins: [new HtmlWebpackPlugin(), new webpack.ProgressPlugin()],
