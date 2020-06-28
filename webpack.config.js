@@ -2,19 +2,19 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
-module.exports = (env) =>
+module.exports = (env) => {
     /** @type {import('webpack').Configuration} */
-    ({
-        mode: env.mode,
+    const config = {
         entry: "./src/index.ts",
         output: {
             filename: "bundle.js",
             path: path.resolve(__dirname, "dist"),
         },
+
         module: {
             rules: [
                 {
-                    test: /\.tsx?$/,
+                    test: /\.js?$/,
                     use: [
                         {
                             loader: "babel-loader",
@@ -29,6 +29,12 @@ module.exports = (env) =>
                 },
             ],
         },
+
         plugins: [new HtmlWebpackPlugin(), new webpack.ProgressPlugin()],
-        devtool: env.mode == "development" ? "inline-source-map" : "none",
-    });
+    };
+
+    const envConfig = require(path.resolve(__dirname, `./webpack.${env.mode}.js`))(env);
+
+    // todo  merge env config with config
+    return config;
+};
