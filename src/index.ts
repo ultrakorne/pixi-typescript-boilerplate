@@ -1,7 +1,5 @@
 import * as PIXI from "pixi.js";
 
-import rabbitImage from "./assets/rabbit.png";
-
 export class Main {
     private static readonly GAME_WIDTH = 800;
     private static readonly GAME_HEIGHT = 600;
@@ -10,25 +8,14 @@ export class Main {
 
     constructor() {
         window.onload = (): void => {
-            this.startLoadingAssets();
+            this.createRenderer();
+            // this.startLoadingAssets();
         };
     }
 
     // add for the test example purpose
     public helloWorld(): string {
         return "hello world";
-    }
-
-    private startLoadingAssets(): void {
-        const loader = PIXI.Loader.shared;
-        loader.add("rabbit", rabbitImage);
-        loader.add("spriteExample", "./assets/spriteSheets/spritesData.json"); // example of loading spriteSheet
-
-        loader.onComplete.once(() => {
-            this.onAssetsLoaded();
-        });
-        //
-        loader.load();
     }
 
     private onAssetsLoaded(): void {
@@ -106,3 +93,13 @@ export class Main {
 }
 
 new Main();
+
+setTimeout(() => {
+    console.log(
+        Object.entries({
+            a: "5",
+            b: "6",
+            c: ["nana", "baba"],
+        })
+    );
+}, 1000);
