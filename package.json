@@ -3,7 +3,7 @@
     "version": "2.3.0",
     "description": "pixi.js typescript boilerplate",
     "scripts": {
-        "webpack": "npx webpack",
+        "webpack": "webpack",
         "webpack-dev-server": "webpack-dev-server --hot",
         "prod": "npm run webpack -- --env.mode production",
         "dev": "npm run webpack-dev-server -- --env.mode development --watch",
